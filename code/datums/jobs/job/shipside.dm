@@ -227,18 +227,22 @@ You are in charge of logistics and the overwatch system. You are also in line to
 	switch(playtime_mins)
 		if(0 to 600) // starting
 			new_human.wear_id.paygrade = "WO"
-		if(601 to 3000) // 10 hrs
+		if(601 to 1500) // 10 hrs
 			new_human.wear_id.paygrade = "CWO"
-		if(3001 to 6000) // 50 hrs
+		if(1501 to 3000) // 25 hrs
 			new_human.wear_id.paygrade = "O1"
-		if(6001 to INFINITY) // 100 hrs
+		if(3001 to 6000) // 50 hrs
 			new_human.wear_id.paygrade = "O2"
+		if(6001 to 18001) // 100 hrs
+			new_human.wear_id.paygrade = "O3"
+		if(18001 to INFINITY) // 300 hrs
+			new_human.wear_id.paygrade = "O4"
 
 /datum/job/terragov/command/pilot/radio_help_message(mob/M)
 	. = ..()
 	to_chat(M, {"Your job is to fly, protect, and maintain the ship's dropship.
 While you are a warrant officer, your authority is limited to the dropship, where you have authority over the enlisted personnel.
-If you are not piloting, there is an autopilot fallback for command, but don't leave the dropship without reason."})
+If you are not piloting, there is an autopilot fallback for command, but don't leave the dropship without reason. If you are acting as CAS pilot, design your loadout wisely, as it costs lot of points, and marines will not be glad of getting FF'ed."})
 
 
 /datum/outfit/job/command/pilot
@@ -248,11 +252,10 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 	id = /obj/item/card/id/silver
 	belt = /obj/item/storage/belt/gun/m4a3/vp70
 	ears = /obj/item/radio/headset/mainship/mcom
-	w_uniform = /obj/item/clothing/under/marine/officer/pilot
-	wear_suit = /obj/item/clothing/suit/armor/vest/pilot
+	w_uniform = obj/item/clothing/under/marine/jaeger
 	shoes = /obj/item/clothing/shoes/marine
-	gloves = /obj/item/clothing/gloves/yellow
-	glasses = /obj/item/clothing/glasses/sunglasses/aviator
+	gloves = /obj/item/clothing/gloves/marine
+	glasses = /obj/item/clothing/glasses/sunglasses
 	head = /obj/item/clothing/head/helmet/marine/pilot
 	r_store = /obj/item/storage/pouch/general/large
 	l_store = /obj/item/hud_tablet/pilot
